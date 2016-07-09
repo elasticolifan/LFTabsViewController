@@ -119,13 +119,13 @@ topSpaceBetweenPointViewAndTitleLabel:(CGFloat)topSpace loadNextSubVCWhenScrollD
         __strong typeof(weakSelf) strongSelf = weakSelf;
         
         if (LFSCREEN_WIDTH > LFSCREEN_HEIGHT) {
-//            NSLog(@"横屏");
             CGFloat naviHeight =  strongSelf.navigationController.navigationBar.bounds.size.height;
+            //如果发现上面的按钮条位置不对,请把下面的naviheight改为0
             strongSelf.lfTabsScrollView.sd_layout.topSpaceToView(strongSelf.view,naviHeight);
             [strongSelf screenRotated];
           }
         else{
-//            NSLog(@"竖屏");
+            //如果发现上面的按钮条位置不对,请把下面的64改为0
             strongSelf.lfTabsScrollView.sd_layout.topSpaceToView(strongSelf.view,64);
             [strongSelf screenRotated];
          }

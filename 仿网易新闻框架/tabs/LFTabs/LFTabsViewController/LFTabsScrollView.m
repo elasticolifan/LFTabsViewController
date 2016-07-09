@@ -67,13 +67,13 @@
         self.pointViewHeight = pointHeight;
         self.leftSpace = leftSpace;
         self.topSpace = topSpace;
-//        self.backgroundColor = [UIColor blueColor];
         if (self.type ==LFPointViewTypeRoundedRectangle) {
+            //如果发现上面的按钮条位置不对,请把下面的64改为0
            self.sd_layout.leftSpaceToView(superView,0).topSpaceToView(superView,64).rightSpaceToView(superView,0).heightIs(height);
             
             
         }else{
-           
+           //如果发现上面的按钮条位置不对,请把下面的64改为0
             self.sd_layout.leftSpaceToView(superView,0).topSpaceToView(superView,64).rightSpaceToView(superView,0).heightIs(height + pointHeight);
         }
         for (int i = 0; i < count; i++) {
@@ -81,8 +81,7 @@
             [tabBtn setTitle:titleArray[i] forState:UIControlStateNormal];
             [tabBtn setTitleColor:[UIColor colorWithRed:self.orValue green:self.ogValue blue:self.obValue alpha:1.0] forState:UIControlStateNormal];
             tabBtn.titleLabel.font = [UIFont systemFontOfSize:titleFontSize];
-            
-//            tabBtn.backgroundColor = [UIColor colorWithRed:arc4random_uniform(255) / 255.0 green:arc4random_uniform(255) / 255.0 blue:arc4random_uniform(255) /255.0 alpha:0.5];
+
             
             if (i == 0) {
                 tabBtn.selected = YES;
@@ -125,7 +124,6 @@
         __weak typeof(self) weakSelf = self;
         self.offsetBlock = ^(CGFloat offset,NSInteger direction){
             __strong typeof(weakSelf) strongSelf = weakSelf;
-//            NSLog(@"pointView.center.x  = %f",strongSelf.pointView.center.x);
             
             [strongSelf animateWithOffset:offset direction:direction];
             
@@ -134,11 +132,7 @@
        
         self.endScrollingBlock = ^(CGFloat offset){
             __strong typeof(weakSelf) strongSelf = weakSelf;
-//            NSLog(@"endScrollingBlock = %f",offset);
             NSInteger tag = offset + 1;
-            
-//            NSLog(@"tag = %ld",tag);
-            
             if ( 0 < tag && tag <= strongSelf.tabsCount) {
             UIButton *btn = [strongSelf viewWithTag:tag];
             [strongSelf handleTabBtnAction:btn]; 
@@ -168,10 +162,6 @@
         leftBtn = self.tabsArray[index];
         rightBtn = self.tabsArray[index + 1];
     }
-    
-//    NSLog(@"index == %d",index);
-//    NSLog(@"offset = %f",offset);
-    
     CGFloat deltaOffset = offset - (int)offset; //deltaOffset 永远是0-1之间
     //pointView中心点动画
     self.pointView.sd_layout.centerXIs(leftBtn.center.x + (rightBtn.center.x - leftBtn.center.x) * deltaOffset);
@@ -213,12 +203,6 @@
         rightBtn.sd_layout.widthIs(rightBtnWidth);
         leftBtn.sd_layout.widthIs(leftBtnWidth);
         
-//        CGFloat spaceBetweenTabs =  rightBtn.titleLabel.frame.origin.x + rightBtn.frame.origin.x -( leftBtn.titleLabel.frame.origin.x + leftBtn.frame.origin.x + leftBtn.titleLabel.frame.size.width);
-//        NSLog(@"spaceBetweenTabs  == %f",spaceBetweenTabs);
-    
-        
-        
-        
         CGFloat contentWidth = 0;
         //获取新的contentsize,并把其他btn恢复原始状态
         for (int i = 0; i < self.tabsArray.count; i++) {
@@ -237,15 +221,7 @@
    if (self.block) {
         self.block(sender.tag - 1);
     }
-    
-//    if (sender == [self.tabsArray firstObject]) {
-//
-//        [sender updateLayout];
-//
-//    }
-    
     CGFloat contentWidth = 0;
-    
     //获取新的contentsize,并把其他btn恢复原始状态
     for (int i = 0; i < self.tabsArray.count; i++) {
         UIButton *btn = self.tabsArray[i];

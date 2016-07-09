@@ -21,13 +21,15 @@
     
     
     UIButton *roundedRectangleTypeBtn = [UIButton buttonWithType:UIButtonTypeSystem];
-    roundedRectangleTypeBtn.frame = CGRectMake(100, 100,100, 50);
+    roundedRectangleTypeBtn.frame = CGRectMake(0, 0,100, 50);
+    roundedRectangleTypeBtn.center = CGPointMake(self.view.bounds.size.width / 2, self.view.bounds.size.height / 2 - 20);
     [roundedRectangleTypeBtn setTitle:@"圆角矩形样式" forState:UIControlStateNormal];
     [self.view addSubview:roundedRectangleTypeBtn];
     [roundedRectangleTypeBtn addTarget:self action:@selector(handleroundedRectangleTypeBtnAction) forControlEvents:UIControlEventTouchUpInside];
     
     UIButton *lineTypeBtn = [UIButton buttonWithType:UIButtonTypeSystem];
-    lineTypeBtn.frame = CGRectMake(100, 200,100, 50);
+    lineTypeBtn.frame = CGRectMake(0, 0,100, 50);
+    lineTypeBtn.center = CGPointMake(self.view.bounds.size.width / 2, self.view.bounds.size.height / 2 + 30);
     [lineTypeBtn setTitle:@"线型样式" forState:UIControlStateNormal];
     [self.view addSubview:lineTypeBtn];
     [lineTypeBtn addTarget:self action:@selector(handleLineTypeBtnAction) forControlEvents:UIControlEventTouchUpInside];
