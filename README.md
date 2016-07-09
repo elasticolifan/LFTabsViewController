@@ -42,6 +42,7 @@ srValue:滑动标签按钮标题选择状态颜色的R值(取值范围0~1.0)
 sgValue:滑动标签按钮标题选择状态颜色的G值(取值范围0~1.0)
 sbValue:滑动标签按钮标题选择状态颜色的B值(取值范围0~1.0)
 
+shouldAutoRotate属性,设置为YES 可以自动旋转,前提是工程打开了重力感应.
 子控制器需要获取到主控制器(LFTabsViewController),用主控制器push到其他页面,具体看demo
 
 如果导入到你的工程后发现上面的按钮条位置不对,请把LFTabsViewController.m文件里的124行的naviheight改成0,129行的64改为0.LFTabsScrollView.m的72行的64改为0,77行的64改为0.
